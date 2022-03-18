@@ -11,7 +11,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="
     node_modules/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css" />
+    <script src="index.js"></script>
 </head>
 
 <body>
@@ -31,18 +33,18 @@
                 <label for="floatingInput">Produto</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="floatingPassword" placeholder="Password" />
+                <input type="number" class="form-control" id="quantidade" placeholder="Password" />
                 <label for="floatingInput">Quantidade</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="number" class="form-control" id="floatingPassword" placeholder="Password" />
-                <label for="floatingInput">Valor</label>
+                <input type="number" class="form-control" id="preco" placeholder="Password" />
+                <label for="floatingInput">Preço</label>
             </div>
         </div>
 
         <div class="container-sm mx-auto m-5">
-            <button type="button" class="btn btn-primary">Cadastrar</button>
-            <button type="button" class="btn btn-primary">Cancelar</button>
+            <button onclick="produto.salvar()" type="button" class="btn btn-primary">Salvar</button>
+            <button onclick="produto.cancelar()" type="button" class="btn btn-primary">Cancelar</button>
 
         </div>
         <table class="table mx-auto m-5">
@@ -53,10 +55,10 @@
                     <th scope="col">Quantidade</th>
                     <th scope="col">Valor</th>
                     <th scope="col">Valor Total</th>
-                    <th scope="col">Ação</th>
+                    <th scope="col">Ações</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="tbody">
                 <tr>
                     <th scope="row">1</th>
                     <td>Mark</td>
@@ -68,6 +70,11 @@
                     <td>Jacob</td>
                     <td>Thornton</td>
                     <td>@fat</td>
+                    <td>15,00</i></td>
+                    <td class="center">
+                        <i class="bi bi-pencil-square"></i>
+                        <i class="bi bi-trash3"></i>
+                    </td>
                 </tr>
                 <tr>
                     <th scope="row">3</th>
