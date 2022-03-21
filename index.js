@@ -25,7 +25,7 @@ class Produto {
     for (let i = 0; i < this.arrayProdutos.length; i++) {
       if (this.arrayProdutos[i].id == id) {
         this.arrayProdutos[i].nomeProduto = produto.nomeProduto;
-        this.arrayProdutos[i].produtoQuantidade = produto.produtoQuantidade;
+        this.arrayProdutos[i].quantidade = produto.quantidade;
         this.arrayProdutos[i].preco = produto.preco;
       }
     }
@@ -35,11 +35,10 @@ class Produto {
     this.editId = dados.id;
 
     document.getElementById("produto").value = dados.nomeProduto;
-    document.getElementById("quantidade").value = dados.produtoQuantidade;
+    document.getElementById("quantidade").value = dados.quantidade;
     document.getElementById("preco").value = dados.preco;
 
     document.getElementById("btn-1").innerText = "Atualizar";
-    
   }
 
   enviarDados() {
@@ -58,9 +57,9 @@ class Produto {
 
       th_id.innerText = this.arrayProdutos[i].id;
       td_produto.innerText = this.arrayProdutos[i].nomeProduto;
-      td_quantidade.innerText = this.arrayProdutos[i].produtoQuantidade;
+      td_quantidade.innerText = this.arrayProdutos[i].quantidade;
       td_preco.innerText = this.arrayProdutos[i].preco;
-      td_valorTotal.innerText = this.arrayProdutos[i].preco;
+      td_valorTotal.innerText = this.arrayProdutos[i].valorTotal;
 
       td_acoes.classList.add("center");
 
@@ -94,8 +93,9 @@ class Produto {
 
     produto.id = this.id;
     produto.nomeProduto = document.getElementById("produto").value;
-    produto.produtoQuantidade = document.getElementById("quantidade").value;
+    produto.quantidade = document.getElementById("quantidade").value;
     produto.preco = document.getElementById("preco").value;
+    produto.valorTotal = this.multiplicar(produto.quantidade, produto.preco);
 
     return produto;
   }
@@ -138,6 +138,10 @@ class Produto {
         }
       }
     }
+  }
+
+  multiplicar(valor1, valor2) {
+    return Number(valor1) * Number(valor2);
   }
 }
 
