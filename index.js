@@ -2,21 +2,45 @@ class Produto {
   constructor() {
     this.id = 1;
     this.arrayProdutos = [];
+    this.editId = null;
   }
 
   salvar() {
     let produto = this.lerDados();
 
     if (this.validaCampos()) {
-      this.adicionar(produto);
+      if (this.editId == null) {
+        this.adicionar(produto);
+      } else {
+        this.atualizar(this.editId, produto);
+      }
     }
     console.log(this.arrayProdutos);
 
     this.enviarDados();
-    // this.cancelar();
+    this.cancelar();
   }
 
-  editarDados() {}
+  atualizar(id, produto) {
+    for (let i = 0; i < this.arrayProdutos.length; i++) {
+      if (this.arrayProdutos[i].id == id) {
+        this.arrayProdutos[i].nomeProduto = produto.nomeProduto;
+        this.arrayProdutos[i].produtoQuantidade = produto.produtoQuantidade;
+        this.arrayProdutos[i].preco = produto.preco;
+      }
+    }
+  }
+
+  editarDados(dados) {
+    this.editId = dados.id;
+
+    document.getElementById("produto").value = dados.nomeProduto;
+    document.getElementById("quantidade").value = dados.produtoQuantidade;
+    document.getElementById("preco").value = dados.preco;
+
+    document.getElementById("btn-1").innerText = "Atualizar";
+    
+  }
 
   enviarDados() {
     let tbody = document.getElementById("tbody");
@@ -42,6 +66,10 @@ class Produto {
 
       let iconeEdit = document.createElement("i");
       iconeEdit.className = "bi bi-pencil-square";
+      iconeEdit.setAttribute(
+        "onclick",
+        "produto.editarDados(" + JSON.stringify(this.arrayProdutos[i]) + ")"
+      );
 
       td_acoes.appendChild(iconeEdit);
 
@@ -94,6 +122,9 @@ class Produto {
     document.getElementById("produto").value = "";
     document.getElementById("quantidade").value = "";
     document.getElementById("preco").value = "";
+
+    document.getElementById("btn-1").innerText = "Salvar";
+    this.editId = null;
   }
 
   deletar(id) {
