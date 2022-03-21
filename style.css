@@ -2,4 +2,12 @@
   font-family: "Roboto", sans-serif;
 }
 
+.center,
+thead tr {
+  text-align: center;
+}
 
+.icone{
+  font-size: 25px;
+  margin: 10px;
+}

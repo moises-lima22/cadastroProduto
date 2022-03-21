@@ -61,10 +61,15 @@ class Produto {
       td_preco.innerText = this.arrayProdutos[i].preco;
       td_valorTotal.innerText = this.arrayProdutos[i].valorTotal;
 
+      th_id.classList.add("center");
+      td_produto.classList.add("center");
+      td_quantidade.classList.add("center");
+      td_preco.classList.add("center");
+      td_valorTotal.classList.add("center");
       td_acoes.classList.add("center");
 
       let iconeEdit = document.createElement("i");
-      iconeEdit.className = "bi bi-pencil-square";
+      iconeEdit.className = "bi bi-pencil-square icone";
       iconeEdit.setAttribute(
         "onclick",
         "produto.editarDados(" + JSON.stringify(this.arrayProdutos[i]) + ")"
@@ -73,7 +78,7 @@ class Produto {
       td_acoes.appendChild(iconeEdit);
 
       let iconeDelete = document.createElement("i");
-      iconeDelete.className = "bi bi-trash3";
+      iconeDelete.className = "bi bi-trash3 icone";
       iconeDelete.setAttribute(
         "onclick",
         "produto.deletar(" + this.arrayProdutos[i].id + ")"
