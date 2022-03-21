@@ -16,6 +16,8 @@ class Produto {
     // this.cancelar();
   }
 
+  editarDados() {}
+
   enviarDados() {
     let tbody = document.getElementById("tbody");
     tbody.innerText = "";
@@ -40,10 +42,16 @@ class Produto {
 
       let iconeEdit = document.createElement("i");
       iconeEdit.className = "bi bi-pencil-square";
+
       td_acoes.appendChild(iconeEdit);
-      
+
       let iconeDelete = document.createElement("i");
       iconeDelete.className = "bi bi-trash3";
+      iconeDelete.setAttribute(
+        "onclick",
+        "produto.deletar(" + this.arrayProdutos[i].id + ")"
+      );
+
       td_acoes.appendChild(iconeDelete);
     }
   }
@@ -86,6 +94,19 @@ class Produto {
     document.getElementById("produto").value = "";
     document.getElementById("quantidade").value = "";
     document.getElementById("preco").value = "";
+  }
+
+  deletar(id) {
+    let tbody = document.getElementById("tbody");
+
+    if (confirm(`Deseja deletar o item? ID = ${id}`)) {
+      for (let i = 0; i < this.arrayProdutos.length; i++) {
+        if (this.arrayProdutos[i].id === id) {
+          this.arrayProdutos.splice(i, 1);
+          tbody.deleteRow(i);
+        }
+      }
+    }
   }
 }
 
